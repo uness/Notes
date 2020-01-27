@@ -1,0 +1,96 @@
+FORMAT: 1A
+
+# Notes API
+Notes API is a *short texts saving* service similar to its physical paper presence on your table.
+
+# Group Notes
+Notes related resources of the **Notes API**
+
+## Notes Collection [/notes]
+### List all Notes [GET]
+
++ Response 200 (application/json; charset=utf-8)
+
+        [{
+        "id": 2,
+        "title": "Second Note",
+        "note": "This is my second note",
+        "edited_by": "OUTOUN"
+        },
+        {
+        "id": 3,
+        "title": "Third Note",
+        "note": "This is my third note",
+        "edited_by": "Uness"
+        },
+        {
+        "id": 4,
+        "title": "Fourth Note",
+        "note": "This is the note content 4",
+        "edited_by": "UIPS"
+        }]
+
+### Create a Note [POST]
++ Request (application/json)
+
+        {
+            "id": 6,
+            "title": "Sixth Note",
+            "note": "This is the note content 6",
+            "edited_by": "Uness"
+        }
+
++ Response 200 (application/json; charset=utf-8)
+
+        {
+            "success" : true,
+            "message" : "Your note was inserted successfully"
+        }
+
+## Notes Collection [/edit_note]
+### Update a Note [POST]
+
++ Request (application/json)
+
+        {
+          "id": 5,
+          "title": "Fifth Note",
+          "note": "This is the note content 5",
+          "edited_by": "Uness"
+         }
+
++ Response 200 (application/json; charset=utf-8)
+
+        {
+            "success" : true,
+            "message" : "Your note was updated successfully"
+        }
+
+## Note [GET /note/{id}]
+A single Note object with all its details
+
++ Parameters
+    + id: `2` (number, required) - Numeric `id` to get note with. Has example value.
+
++ Response 200 (application/json; charset=utf-8)
+
+        {
+           "id": 2, 
+           "title": "Second Note", 
+           "note": "This is my second note", 
+           "edited_by": "OUTOUN"
+        }
+
+
+## Note deletion [/note/{id}]
+### Remove a Note [DELETE]
+
++ Parameters
+    + id: `5` (number, required) - Numeric `id` to delete note with.
+
++ Response 200 (application/json; charset=utf-8)
+
+        {
+           "success" : true,
+           "message" : "Your note was deleted successfully"
+        }
